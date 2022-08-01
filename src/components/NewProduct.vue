@@ -25,14 +25,9 @@
         </div>
       </div>
     </div>
-    <div class="price flex justify-between p-4">
+    <div class="price flex justify-start p-4">
       <div class="new">
         <h3 class="font-extrabold text-lg">{{ product.new_price }}</h3>
-        <span class="text-muted">С картой</span>
-      </div>
-      <div class="old">
-        <h4 class="text-lg">{{ product.old_price }}</h4>
-        <span class="text-muted">Обычная</span>
       </div>
     </div>
     <div class="title px-4">

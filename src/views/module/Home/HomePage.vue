@@ -1,7 +1,7 @@
 <template>
   <layout>
-    <div class="corusel h-52 w-full mt-4"><Swiper /></div>
-    <div class="container pb-96">
+    <div class="corusel h-52 w-full"><Swiper /></div>
+    <div class="container">
       <div class="discount">
         <div class="flex justify-between items-end">
           <div class="text-4xl font-bold">Акции</div>
@@ -10,8 +10,10 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10">
-          <ProductCard v-for="item in 4" :key="item" />
+        <div class="flex justify-between mt-10 items-stretch">
+          <div v-for="item in discount_products" :key="item">
+            <ProductCard class="h-full" :product="item" />
+          </div>
         </div>
       </div>
       <div class="news">
@@ -22,8 +24,10 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10">
-          <ProductCard v-for="item in 4" :key="item" />
+        <div class="flex justify-between mt-10 items-stretch">
+          <div v-for="item in new_products" :key="item">
+            <NewProduct class="h-full" :product="item" />
+          </div>
         </div>
       </div>
       <div class="more-buy">
@@ -34,8 +38,10 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10">
-          <ProductCard v-for="item in 4" :key="item" />
+        <div class="flex justify-between mt-10 items-stretch">
+          <div v-for="item in more_buy" :key="item">
+            <NewProduct class="h-full" :product="item" />
+          </div>
         </div>
       </div>
 
@@ -101,6 +107,7 @@
 import Layout from "@/layouts/Layout.vue";
 import Swiper from "@/views/module/Home/components/Swiper.vue";
 import ProductCard from "@/components/ProductCard.vue";
+import NewProduct from "@/components/NewProduct.vue";
 import OfferCard from "@/components/OfferCard.vue";
 import Adds from "@/components/Adds.vue";
 export default {
@@ -110,9 +117,92 @@ export default {
     ProductCard,
     OfferCard,
     Adds,
+    NewProduct,
   },
   data() {
     return {
+      discount_products: [
+        {
+          img: require("@/assets/images/pro1.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          old_price: "55.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro2.png"),
+          discount: "-50%",
+          new_price: "23.50$",
+          old_price: "46.50$",
+          title: "Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...",
+        },
+        {
+          img: require("@/assets/images/pro3.png"),
+          discount: "-50%",
+          new_price: "78.50$",
+          old_price: "99.50$",
+          title: "Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан... ",
+        },
+        {
+          img: require("@/assets/images/pro4.png"),
+          discount: "-50%",
+          new_price: "60.50$",
+          old_price: "90.50$",
+          title: "Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро... ",
+        },
+      ],
+      new_products: [
+        {
+          img: require("@/assets/images/pro5.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro6.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro7.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro8.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+      ],
+      more_buy: [
+        {
+          img: require("@/assets/images/pro1.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro5.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro2.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+        {
+          img: require("@/assets/images/pro3.png"),
+          discount: "-50%",
+          new_price: "44.50$",
+          title: "Г/Ц Блинчики с мясом вес, Россия",
+        },
+      ],
       offers: [
         {
           bg_data: " bg-offer-card1",

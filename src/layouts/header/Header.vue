@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-lg h-16 w-full flex header-sticky">
+  <div class="shadow-xl h-16 w-full flex header-sticky bg-white">
     <header class="flex justify-between w-5/6 items-center gap-16 container">
       <div class="logo flex w-32 h-full gap-5 items-center cursor-pointer">
         <img src="@/assets/icons/logo.svg" width="50" alt="Logo" />

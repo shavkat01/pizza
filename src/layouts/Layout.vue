@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <Header/>
+  <div class="bg-body-color">
+    <Header />
     <!-- <mobile-menu /> -->
-    <main class="bg-body-color">
+    <main>
       <slot></slot>
     </main>
     <Footer />

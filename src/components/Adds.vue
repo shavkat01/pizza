@@ -1,11 +1,9 @@
 <template>
   <div
-    class="w-[400px] h-[450px] bg-white flex flex-col rounded-lg shadow-md py-1"
+    class="w-[400px] bg-white flex flex-col rounded-lg shadow-md py-1"
   >
-    <div class="head relative">
-      <div class="img flex justify-center">
-        <img :src="add_data.img" alt="" />
-      </div>
+    <div class="head relative w-full">
+      <img class="w-full rounded-t" :src="add_data.img" alt="" />
     </div>
     <div class="price flex justify-between p-4">
       <div class="new">

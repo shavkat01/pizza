@@ -9,7 +9,7 @@
         {{ data.text }}
       </div>
     </div>
-    <div class="px-6 w-3/4 my-auto">
+    <div class="px-6 w-3/4 my-auto flex justify-end">
       <img class="" :src="data.img" alt="" />
     </div>
   </div>
