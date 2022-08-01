@@ -1,0 +1,157 @@
+<template>
+  <layout>
+    <div class="corusel h-52 w-full mt-4"><Swiper /></div>
+    <div class="container pb-96">
+      <div class="discount">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Акции</div>
+          <div class="flex items-center gap-8 mt-10 cursor-pointer">
+            <div class="text-lg">Все акции</div>
+            <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
+          </div>
+        </div>
+        <div class="flex justify-between mt-10">
+          <ProductCard v-for="item in 4" :key="item" />
+        </div>
+      </div>
+      <div class="news">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Новинки</div>
+          <div class="flex items-center gap-8 mt-10 cursor-pointer">
+            <div class="text-lg">Все новинки</div>
+            <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
+          </div>
+        </div>
+        <div class="flex justify-between mt-10">
+          <ProductCard v-for="item in 4" :key="item" />
+        </div>
+      </div>
+      <div class="more-buy">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Покупали раньше</div>
+          <div class="flex items-center gap-8 mt-10 cursor-pointer">
+            <div class="text-lg">Все покупки</div>
+            <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
+          </div>
+        </div>
+        <div class="flex justify-between mt-10">
+          <ProductCard v-for="item in 4" :key="item" />
+        </div>
+      </div>
+
+      <div class="offers my-32">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Специальные предложения</div>
+        </div>
+        <div class="flex justify-between mt-5">
+          <div v-for="item in offers" :key="item">
+            <OfferCard class="shadow-2xl" :data="item" />
+          </div>
+        </div>
+      </div>
+      <div class="branchs">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Наши магазины</div>
+        </div>
+        <div class="flex gap-3 mt-4">
+          <button class="bg-brand-btn rounded px-9 text-white py-2">
+            п.Щельяюр
+          </button>
+          <button class="bg-brand-btn rounded px-9 text-white py-2">
+            д.Вертеп
+          </button>
+          <button class="bg-brand-btn rounded px-9 text-white py-2">
+            с.Краснобор
+          </button>
+          <button class="bg-brand-btn rounded px-9 text-white py-2">
+            д.Диюр
+          </button>
+        </div>
+        <div class="mt-5">
+          <iframe
+            class="w-full"
+            :src="map"
+            height="450"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="more-buy mt-10">
+        <div class="flex justify-between items-end">
+          <div class="text-4xl font-bold">Статьи</div>
+          <div class="flex items-center gap-8 mt-10 cursor-pointer">
+            <div class="text-lg">Все статьи</div>
+            <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
+          </div>
+        </div>
+        <div class="flex justify-between mt-10">
+          <div v-for="item in adds_data" :key="item">
+            <Adds class="shadow-2xl" :add_data="item" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </layout>
+</template>
+
+<script>
+import Layout from "@/layouts/Layout.vue";
+import Swiper from "@/views/module/Home/components/Swiper.vue";
+import ProductCard from "@/components/ProductCard.vue";
+import OfferCard from "@/components/OfferCard.vue";
+import Adds from "@/components/Adds.vue";
+export default {
+  components: {
+    Layout,
+    Swiper,
+    ProductCard,
+    OfferCard,
+    Adds,
+  },
+  data() {
+    return {
+      offers: [
+        {
+          bg_data: " bg-offer-card1",
+          title: "Оформите карту «Северяночка»",
+          text: "И получайте бонусы при покупке в магазинах и на сайте",
+          img: require("@/assets/images/carta.png"),
+        },
+        {
+          bg_data: " bg-offer-card2",
+          title: "Покупайте акционные товары",
+          text: "И получайте вдвое больше бонусов",
+          img: require("@/assets/images/pro-bucket.png"),
+        },
+      ],
+      adds_data: [
+        {
+          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
+          title: "Режим использования масок и перчаток на территории магазинов",
+          time: "05.03.2021",
+          img: require("@/assets/images/add1.png"),
+        },
+        {
+          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
+          title: "Режим использования масок и перчаток на территории магазинов",
+          time: "05.03.2021",
+          img: require("@/assets/images/add2.png"),
+        },
+        {
+          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
+          title: "Режим использования масок и перчаток на территории магазинов",
+          time: "05.03.2021",
+          img: require("@/assets/images/add3.png"),
+        },
+      ],
+      map: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5993.952157794102!2d69.274724!3d41.309384!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x81095e06b654b845!2sAmir%20Temur%20Square!5e0!3m2!1sen!2sus!4v1659287831875!5m2!1sen!2sus",
+    };
+  },
+};
+</script>
+
+<style>
+</style>
