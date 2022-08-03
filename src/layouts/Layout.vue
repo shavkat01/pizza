@@ -1,26 +1,14 @@
 <template>
-  <div class="bg-body-color">
-    <Header />
-    <!-- <mobile-menu /> -->
-    <main>
-      <slot></slot>
-    </main>
-    <Footer />
-  </div>
+    <div class="bg-body-color">
+        <main>
+            <slot> </slot>
+        </main>
+    </div>
 </template>
 
 
 <script>
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
-// import MobileMenu from "./header/MobileMenu";
-
 export default {
-  name: "Layout",
-  components: {
-    // MobileMenu,
-    Footer,
-    Header,
-  },
+    name: "Layout",
 };
 </script>

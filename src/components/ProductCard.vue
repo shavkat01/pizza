@@ -1,13 +1,12 @@
 <template>
   <div
     class="
-      w-[330px]
+      w-[300px]
       bg-white
       flex flex-col
       justify-between
       rounded-lg
       shadow-md
-      py-1
     "
   >
     <div class="head relative">
@@ -16,8 +15,8 @@
           <img src="@/assets/icons/Like.png" alt="product" />
         </div>
       </div>
-      <div class="img flex justify-center">
-        <img class="w-72 h-44" :src="product.img" alt="product" />
+      <div class="img flex justify-center px-[0.5px]">
+        <img class="w-full rounded-t h-44" :src="product.img" alt="product" />
       </div>
       <div class="px-4">
         <div class="bg-main-color w-20 px-5 py-1 rounded-lg">

@@ -1,7 +1,7 @@
 <template>
   <div class="shadow-xl h-16 w-full flex header-sticky bg-white">
     <header class="flex justify-between w-5/6 items-center gap-16 container">
-      <div class="logo flex w-32 h-full gap-5 items-center cursor-pointer">
+      <div class="logo flex w-32 h-full gap-5 items-center cursor-pointer" @click="$router.push('/')">
         <img src="@/assets/icons/logo.svg" width="50" alt="Logo" />
         <div class="brand text-xl tracking-widest font-bold">Pizza</div>
       </div>
@@ -16,7 +16,7 @@
             items-center
             cursor-pointer
           "
-        >
+         @click="$router.push('/catalog')">
           <img src="@/assets/icons/menu.png" class="w-8 h-7" alt="menu" />
           <p class="text-white mr-5">Catalog</p>
         </div>
