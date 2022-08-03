@@ -1,11 +1,13 @@
 <template>
-    <Header />
-    <RouterView class="router-view" v-slot="{ Component }">
-        <Transition name="page-opacity" mode="out-in">
-            <component :is="Component" /> 
-        </Transition>
-    </RouterView>
-    <Footer />
+    <div class="bg-body-color">
+        <Header />
+        <RouterView class="router-view" v-slot="{ Component }">
+            <Transition name="page-opacity" mode="out-in">
+                <component :is="Component" />
+            </Transition>
+        </RouterView>
+        <Footer />
+    </div>
 </template>
 
 <script>
