@@ -1,7 +1,9 @@
 <template>
     <layout>
         <div class="container mt-10">
-            <h1 class="text-6xl font-bold my-10">Каталог</h1>
+            <h1 class="lg:text-6xl md:text-3xl sm:text-xl font-bold my-10">
+                Каталог
+            </h1>
             <div class="flex flex-wrap justify-between gap-10">
                 <div class="" v-for="item in cardData" :key="item">
                     <Card :data="item" />

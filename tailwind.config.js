@@ -3,6 +3,7 @@ module.exports = {
   content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     screens: {
+      'xsm': '400px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -25,8 +26,11 @@ module.exports = {
       'white': '#ffffff',
       'like-bg': '#F9F8F8',
       'muted': '#BFBFBF',
+      'muted-btn': '#F3F2F1',
+      'muted-text': '#606060',
       'offer-card1': '#F5C6AA',
       'offer-card2': '#E5FFDE',
+      'black': '#000000',
     },
     extend: {},
     container: {
