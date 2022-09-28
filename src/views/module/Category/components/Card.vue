@@ -1,20 +1,20 @@
 <template>
-    <!-- <div class="h-52 w-72 relative rounded-md flex items-end">
-        <img
-            class="absolute w-full h-full rounded-md"
-            :src="data.img"
-            alt="image"
-        />
+    <div class="rounded-md relative hover:scale-105 transition-all">
+        <img class="w-full h-full rounded-md " :src="data.img" />
         <div
-            class="absolute w-full h-2/3 flex items-end rounded-md"
+            class="
+                z-20
+                w-full
+                h-1/2
+                absolute
+                custom1
+                top-1/2
+                flex
+                items-end
+                rounded-md
+            "
             :class="data.class"
         >
-            {{ data.name }}
-        </div>
-    </div> -->
-    <div class="rounded-md relative">
-        <img class="w-full h-full rounded-md" :src="data.img" />
-        <div class="z-20 w-full h-1/2 absolute custom1 top-1/2 flex items-end rounded-md" :class="data.class">
             <p class="px-4 pb-4 font-bold text-2xl text-white">
                 {{ data.name }}
             </p>

@@ -10,7 +10,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10 items-stretch">
+        <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in discount_products" :key="item">
             <ProductCard class="h-full" :product="item" />
           </div>
@@ -24,7 +24,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10 items-stretch">
+        <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in new_products" :key="item">
             <NewProduct class="h-full" :product="item" />
           </div>
@@ -38,7 +38,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10 items-stretch">
+        <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in more_buy" :key="item">
             <NewProduct class="h-full" :product="item" />
           </div>
@@ -49,7 +49,7 @@
         <div class="flex justify-between items-end">
           <div class="text-4xl font-bold">Специальные предложения</div>
         </div>
-        <div class="flex justify-between mt-5">
+        <div class="flex justify-between gap-10 flex-wrap mt-5">
           <div v-for="item in offers" :key="item">
             <OfferCard class="shadow-2xl" :data="item" />
           </div>
@@ -93,7 +93,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        <div class="flex justify-between mt-10">
+        <div class="flex justify-between gap-10 flex-wrap mt-10">
           <div v-for="item in adds_data" :key="item">
             <Adds class="shadow-2xl" :add_data="item" />
           </div>
