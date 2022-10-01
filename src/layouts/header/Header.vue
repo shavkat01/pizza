@@ -178,11 +178,11 @@ export default {
 
 <style lang="scss">
 .header-sticky {
-  position: sticky !important;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  backdrop-filter: blur(55px);
+    position: sticky !important;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    backdrop-filter: blur(55px);
 }
 .reds {
   color: #ff6633;
