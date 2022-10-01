@@ -30,6 +30,7 @@ module.exports = {
       'muted-text': '#606060',
       'offer-card1': '#F5C6AA',
       'offer-card2': '#E5FFDE',
+      'black': '#000000',
     },
     extend: {},
     container: {
