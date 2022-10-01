@@ -8,23 +8,28 @@ const routes = [
   },
   {
     path: '/catalog/:id',
-    name: 'Catalog',
+    name: 'catalog',
     component: () => import('../views/module/Category/Catalog.vue')
   },
   {
     path: '/favorites',
-    name: 'Favorites',
+    name: 'favorites',
     component: () => import('../views/module/Favorites/index.vue')
   },
   {
     path: '/booking',
-    name: 'Booking',
+    name: 'booking',
     component: () => import('../views/module/Booking/index.vue')
   },
   {
     path: '/cart',
-    name: 'Cart',
+    name: 'cart',
     component: () => import('../views/module/Saved/index.vue')
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: () => import('../views/Auth.vue')
   },
 ]
 

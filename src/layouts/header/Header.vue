@@ -74,7 +74,12 @@
           @click="clickedTab('2'), $router.push('/booking')"
           class="icon flex flex-col justify-center items-center cursor-pointer"
         >
-          <img v-if="isSecond" src="@/assets/icons/package.png" alt="" width="25" />
+          <img
+            v-if="isSecond"
+            src="@/assets/icons/package.png"
+            alt=""
+            width="25"
+          />
           <img v-else src="@/assets/icons/six.png" alt="" width="25" />
           <p ref="offer" :class="{ reds: isSecond }">Заказы</p>
         </div>
@@ -82,11 +87,23 @@
           @click="clickedTab('3'), $router.push('/cart')"
           class="icon flex flex-col justify-center items-center cursor-pointer"
         >
-          <img v-if="isThird" src="@/assets/icons/shopping-cart-main-color.png" alt="" width="25" />
-          <img v-else src="@/assets/icons/shopping-cart.png" alt="" width="25" />
+          <img
+            v-if="isThird"
+            src="@/assets/icons/shopping-cart-main-color.png"
+            alt=""
+            width="25"
+          />
+          <img
+            v-else
+            src="@/assets/icons/shopping-cart.png"
+            alt=""
+            width="25"
+          />
           <p ref="cart" :class="{ reds: isThird }">Корзина</p>
         </div>
       </div>
+
+      <!-- Profil part -->
       <div
         v-if="is_mobile"
         class="profile flex items-center gap-3 cursor-pointer"
@@ -99,122 +116,24 @@
       </div>
     </header>
 
-    <div
-      v-if="is_open"
-      class="absolute top-[100%] w-full bg-white py-8 shadow-xl"
-    >
-      <div class="container flex justify-between">
-        <div
-          v-for="(catalog, index) in downCatalogs"
-          :key="index"
-          class="flex flex-col gap-4"
-        >
-          <h4
-            class="font-medium cursor-pointer"
-            v-if="catalog.first"
-            @click="$router.push(`/catalog/${catalog.first.id}`)"
-          >
-            {{ catalog.first.text }}
-          </h4>
-          <h4
-            class="font-medium cursor-pointer"
-            v-if="catalog.second"
-            @click="$router.push(`/catalog/${catalog.second.id}`)"
-          >
-            {{ catalog.second.text }}
-          </h4>
-          <h4
-            class="font-medium cursor-pointer"
-            v-if="catalog.third"
-            @click="$router.push(`/catalog/${catalog.third.id}`)"
-          >
-            {{ catalog.third.text }}
-          </h4>
-          <h4
-            class="font-medium cursor-pointer"
-            v-if="catalog.fourth"
-            @click="$router.push(`/catalog/${catalog.fourth.id}`)"
-          >
-            {{ catalog.fourth.text }}
-          </h4>
-        </div>
-      </div>
-    </div>
+    <DownCatalogs v-if="is_open" />
   </div>
 </template>
 
 <script>
+import DownCatalogs from "../../views/module/Category/HeaderDownCatalog.vue";
 export default {
+  components: {
+    DownCatalogs,
+  },
   data() {
     return {
-      isFirs: false,
-      isSecond: false,
-      isThird: false,
       is_tablet: true,
       is_mobile: true,
       is_open: false,
-      downCatalogs: [
-        {
-          first: {
-            text: "Молоко, сыр, яйцо",
-            id: 1,
-          },
-          second: {
-            text: "Хлеб",
-            id: 2,
-          },
-          third: {
-            text: "Фрукты и овощи",
-            id: 3,
-          },
-          fourth: {
-            text: "Замороженные продукты",
-            id: 4,
-          },
-        },
-        {
-          first: {
-            text: "Напитки",
-            id: 5,
-          },
-          second: {
-            text: "Кондитерские изделия",
-            id: 6,
-          },
-          third: {
-            text: "Чай, кофе",
-            id: 7,
-          },
-        },
-        {
-          first: {
-            text: "Бакалея",
-            id: 8,
-          },
-          second: {
-            text: "Здоровое питание",
-            id: 9,
-          },
-          third: {
-            text: "Зоотовары",
-            id: 10,
-          },
-        },
-        {
-          first: {
-            text: "Непродовольственные товары",
-            id: 11,
-          },
-          second: {
-            text: "Детское питание",
-            id: 12,
-          },
-          third: {
-            text: "Мясо, птица, колбаса",
-            id: 13,
-          },
-        },
-      ],
+      isFirs: false,
+      isSecond: false,
+      isThird: false,
     };
   },
   methods: {
@@ -250,27 +169,9 @@ export default {
         this.isFirs = false;
       }
     },
-    // FaVClick(){
-    //   this.$refs.favorite.classList.add('reds')
-    //   this.$refs.offer.classList.remove('reds')
-    //   this.$refs.cart.classList.remove('reds')
-    // },
-    // OfClick(){
-    //   this.$refs.offer.classList.add('reds')
-    //   this.$refs.cart.classList.remove('reds')
-    //   this.$refs.favorite.classList.remove('reds')
-
-    // },
-    // CaClick(){
-    //   this.$refs.cart.classList.add('reds')
-    //   this.$refs.favorite.classList.remove('reds')
-    //   this.$refs.offer.classList.remove('reds')
-
-    // }
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
-    console.log(this.$refs.favorite);
   },
 };
 </script>
