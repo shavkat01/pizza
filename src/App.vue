@@ -6,7 +6,7 @@
                 <component :is="Component" />
             </Transition>
         </RouterView>
-        <Footer />
+        <Footer/>
     </div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style>
+body{
+    @apply h-full
+}
 .page-opacity-enter-active,
 .page-opacity-leave-active {
     transition: 300ms ease all;
@@ -31,5 +34,14 @@ export default {
 .page-opacity-enter-from,
 .page-opacity-leave-to {
     opacity: 0;
+}
+.main{
+    position: relative;
+    height: 100vh;
+}
+.footer{
+    position: sticky;
+    bottom: 0;
+    
 }
 </style>
