@@ -1,25 +1,24 @@
 <template>
-    <div class="rounded-md relative hover:scale-105 transition-all">
-        <img class="w-full h-full rounded-md " :src="data.img" />
-        <div
-            class="
-                z-20
-                w-full
-                h-1/2
-                absolute
-                custom1
-                top-1/2
-                flex
-                items-end
-                rounded-md
-            "
-            :class="data.class"
-        >
-            <p class="px-4 pb-4 font-bold text-2xl text-white">
-                {{ data.name }}
-            </p>
+        <div class="rounded-md relative hover:scale-105 transition-all">
+            <img class="w-full h-full rounded-md " :src="data.photo" />
+            <div
+                class="
+                    z-20
+                    w-full
+                    h-1/2
+                    absolute
+                    custom1
+                    top-1/2
+                    flex
+                    items-end
+                    rounded-md
+                "
+            >
+                <p class="px-4 pb-4 font-bold text-2xl text-white">
+                    {{ data.title }}
+                </p>
+            </div>
         </div>
-    </div>
 </template>
 
 <script>

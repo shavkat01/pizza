@@ -1,47 +1,26 @@
 <template>
-  <div
-    class="absolute top-[100%] w-full bg-white py-8 shadow-xl"
-  >
+  <div class="absolute top-[100%] w-full bg-white py-8 shadow-xl">
     <div class="container flex justify-between">
       <div
-        v-for="(catalog, index) in downCatalogs"
+        v-for="(catalog, index) in $store.state.CatologData.message.catalogs"
         :key="index"
         class="flex flex-col gap-4"
       >
         <h4
           class="font-medium cursor-pointer"
-          v-if="catalog.first"
-          @click="$router.push(`/catalog/${catalog.first.id}`)"
+          @click="$router.push(`/catalog_info/${catalog._id}`)"
         >
-          {{ catalog.first.text }}
-        </h4>
-        <h4
-          class="font-medium cursor-pointer"
-          v-if="catalog.second"
-          @click="$router.push(`/catalog/${catalog.second.id}`)"
-        >
-          {{ catalog.second.text }}
-        </h4>
-        <h4
-          class="font-medium cursor-pointer"
-          v-if="catalog.third"
-          @click="$router.push(`/catalog/${catalog.third.id}`)"
-        >
-          {{ catalog.third.text }}
-        </h4>
-        <h4
-          class="font-medium cursor-pointer"
-          v-if="catalog.fourth"
-          @click="$router.push(`/catalog/${catalog.fourth.id}`)"
-        >
-          {{ catalog.fourth.text }}
+          {{ catalog.title }}
         </h4>
       </div>
     </div>
+    
+
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -108,6 +87,8 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
   },
 };
 </script>

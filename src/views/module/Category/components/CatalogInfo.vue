@@ -4,7 +4,7 @@
             header             
         </div>
         <div>
-            sidebar
+            {{$route.params.id}}
         </div>
         <div>
             footer

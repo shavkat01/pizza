@@ -37,7 +37,7 @@
             class="lg:w-8 lg:h-7"
             alt="menu"
           />
-          <p v-if="is_tablet" class="text-white mr-5 select-none">Catalog</p>
+          <p @click="$router.push('/catalog')" v-if="is_tablet" class="text-white mr-5 select-none">Catalog</p>
         </div>
         <input
           placeholder="Search your pizza"
@@ -115,13 +115,13 @@
         </div>
       </div>
     </header>
-
     <DownCatalogs v-if="is_open" />
   </div>
 </template>
 
 <script>
 import DownCatalogs from "../../views/module/Category/HeaderDownCatalog.vue";
+import {mapState, mapActions, mapMutations} from 'vuex'
 export default {
   components: {
     DownCatalogs,
@@ -134,9 +134,15 @@ export default {
       isFirs: false,
       isSecond: false,
       isThird: false,
+      catalogTitle: 'gvhb'
     };
   },
+  computed:{
+    ...mapState(['CatalogData'])
+  },
   methods: {
+    ...mapMutations(['SET_CATALOG_DATA']),
+    ...mapActions(['FETCH_CATALOGS_DATA']),
     onResize(e) {
       if (window.innerWidth <= 1280) {
         this.is_tablet = false;
@@ -151,6 +157,7 @@ export default {
     },
     changeIsOpen() {
       this.is_open = !this.is_open;
+
     },
     clickedTab(val) {
       if (val == "1") {
@@ -172,6 +179,8 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
+    this.SET_CATALOG_DATA()
+    this.FETCH_CATALOGS_DATA()
   },
 };
 </script>

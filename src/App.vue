@@ -32,4 +32,15 @@ export default {
 .page-opacity-leave-to {
     opacity: 0;
 }
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+input:checked ~ .line {
+  background-color: #70C05B;
+}
+.space_between{
+  justify-content: space-between;
+  align-items: center;
+}
+
 </style>
