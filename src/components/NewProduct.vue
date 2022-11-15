@@ -44,6 +44,10 @@
           justify-center
           text-2xl
           rounded-md
+          py-2
+          hover:bg-main-color
+          hover:text-white
+          hover:border-white
         "
       >
         В корзину

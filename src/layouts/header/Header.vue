@@ -1,16 +1,16 @@
 <template>
   <div class="shadow-xl w-full flex header-sticky bg-white flex-wrap">
     <header class="flex justify-between items-center container py-3">
-      <div
-        class="flex gap-4 h-full items-center cursor-pointer"
-        @click="$router.push('/')"
-      >
-        <img src="@/assets/icons/logo.svg" width="50" alt="Logo" />
-        <div v-if="is_tablet" class="brand text-xl tracking-widest font-bold">
-          Pizza
+      <router-link to="/">
+        <div class="flex gap-4 h-full items-center cursor-pointer">
+          <img src="@/assets/icons/logo.svg" width="50" alt="Logo" />
+          <div v-if="is_tablet" class="brand text-xl tracking-widest font-bold">
+            Pizza
+          </div>
         </div>
-      </div>
+      </router-link>
       <div class="flex gap-8">
+     
         <div
           v-if="is_mobile"
           class="
@@ -19,13 +19,13 @@
             flex
             gap-4
             rounded
-            px-5
+            px-10
             items-center
             cursor-pointer
           "
-          @click="changeIsOpen()"
+          @click="changeIsOpen(), $router.push(`/catalog/:id`)"
         >
-          <img
+          <!-- <img
             v-if="is_open"
             src="@/assets/icons/x-white.png"
             class="lg:w-8 lg:h-7"
@@ -36,9 +36,10 @@
             src="@/assets/icons/menu.png"
             class="lg:w-8 lg:h-7"
             alt="menu"
-          />
-          <p v-if="is_tablet" class="text-white mr-5 select-none">Catalog</p>
+          /> -->
+            <p v-if="is_tablet" class="text-white  select-none">Catalog</p>
         </div>
+  
         <input
           placeholder="Search your pizza"
           class="
@@ -62,33 +63,33 @@
           class="icon flex flex-col justify-center items-center cursor-pointer"
         >
           <img
-            v-if="isFirs"
+            v-if="$route.path == '/favorites'" 
             src="@/assets/icons/like-main-color.png"
             alt=""
-            width="27"
+            width="25"
           />
           <img v-else src="@/assets/icons/Like.png" alt="" width="25" />
-          <p ref="favorite" :class="{ reds: isFirs }">Избранное</p>
+          <p ref="favorite" :class="{ reds: $route.path == '/favorites' }">Избранное</p>
         </div>
         <div
           @click="clickedTab('2'), $router.push('/booking')"
           class="icon flex flex-col justify-center items-center cursor-pointer"
         >
           <img
-            v-if="isSecond"
+            v-if="$route.path == '/booking'" 
             src="@/assets/icons/package.png"
             alt=""
             width="25"
           />
           <img v-else src="@/assets/icons/six.png" alt="" width="25" />
-          <p ref="offer" :class="{ reds: isSecond }">Заказы</p>
+          <p ref="offer" :class="{ reds: $route.path == '/booking' }">Заказы</p>
         </div>
         <div
           @click="clickedTab('3'), $router.push('/cart')"
           class="icon flex flex-col justify-center items-center cursor-pointer"
         >
           <img
-            v-if="isThird"
+            v-if="$route.path == '/cart'"
             src="@/assets/icons/shopping-cart-main-color.png"
             alt=""
             width="25"
@@ -99,7 +100,7 @@
             alt=""
             width="25"
           />
-          <p ref="cart" :class="{ reds: isThird }">Корзина</p>
+          <p ref="cart" :class="{ reds: $route.path == '/cart' }">Корзина</p>
         </div>
       </div>
 
@@ -115,13 +116,13 @@
         </div>
       </div>
     </header>
-
     <DownCatalogs v-if="is_open" />
   </div>
 </template>
 
 <script>
 import DownCatalogs from "../../views/module/Category/HeaderDownCatalog.vue";
+import {mapState, mapActions, mapMutations} from 'vuex'
 export default {
   components: {
     DownCatalogs,
@@ -134,9 +135,15 @@ export default {
       isFirs: false,
       isSecond: false,
       isThird: false,
+      catalogTitle: 'gvhb'
     };
   },
+  computed:{
+    ...mapState(['CatalogData'])
+  },
   methods: {
+    ...mapMutations(['SET_CATALOG_DATA']),
+    ...mapActions(['FETCH_CATALOGS_DATA']),
     onResize(e) {
       if (window.innerWidth <= 1280) {
         this.is_tablet = false;
@@ -151,6 +158,7 @@ export default {
     },
     changeIsOpen() {
       this.is_open = !this.is_open;
+
     },
     clickedTab(val) {
       if (val == "1") {
@@ -172,6 +180,8 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
+    this.SET_CATALOG_DATA()
+    this.FETCH_CATALOGS_DATA()
   },
 };
 </script>

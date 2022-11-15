@@ -58,7 +58,7 @@
           rounded
           hover:bg-main-color
           hover:text-white
-          hover:border-none
+          hover:border-white
         "
       >
         В корзину

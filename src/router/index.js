@@ -12,6 +12,11 @@ const routes = [
     component: () => import('../views/module/Category/Catalog.vue')
   },
   {
+    path: '/cardDetails/:id',
+    name: 'cardDetails',
+    component: () => import('../views/module/Category/CardDetails/index.vue')
+  },
+  {
     path: '/favorites',
     name: 'favorites',
     component: () => import('../views/module/Favorites/index.vue')
@@ -24,7 +29,23 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: () => import('../views/module/Saved/index.vue')
+    component: () => import('../views/module/Saved/index.vue'),
+    children: [
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: '/cart',
+        component: () => import('../views/module/Saved/cart.vue'),
+
+      },
+      {
+        // UserPosts will be rendered inside User's <router-view>
+        // when /user/:id/posts is matched
+        path: '/delivery',
+        component: () => import('../views/module/Saved/delivery.vue'),
+
+      }
+    ]
   },
   {
     path: '/product',
@@ -35,6 +56,11 @@ const routes = [
     path: '/auth',
     name: 'auth',
     component: () => import('../views/Auth.vue')
+  },
+  {
+    path: '/catalog_info/:id',
+    name: 'catalog_info',
+    component: () => import('../views/module/Category/components/CatalogInfo')
   },
 ]
 

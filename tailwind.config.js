@@ -31,8 +31,11 @@ module.exports = {
       'offer-card1': '#F5C6AA',
       'offer-card2': '#E5FFDE',
       'black': '#000000',
+      'text_black': '#414141',
     },
-    extend: {},
+    extend: {
+      
+    },
     container: {
       center: true,
     },
