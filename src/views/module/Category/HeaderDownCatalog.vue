@@ -2,12 +2,12 @@
   <div class="absolute top-[100%] w-full bg-white py-8 shadow-xl">
     <div class="container flex justify-between">
       <div
-        v-for="(catalog, index) in $store.state.CatologData.message.catalogs"
+        v-for="(catalog, index) in $store.state.catalog.catalogs"
         :key="index"
-        class="flex flex-col gap-4"
+        class="grid gap-x-8 gap-y-4 grid-cols-3"
       >
         <h4
-          class="font-medium cursor-pointer"
+          class="font-medium w-44 cursor-pointer"
           @click="$router.push(`/catalog_info/${catalog._id}`)"
         >
           {{ catalog.title }}
