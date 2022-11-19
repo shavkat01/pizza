@@ -7,7 +7,7 @@ const routes = [
     component: () => import('../views/module/Home/HomePage.vue')
   },
   {
-    path: '/catalog/:id',
+    path: '/catalog',
     name: 'catalog',
     component: () => import('../views/module/Category/Catalog.vue')
   },

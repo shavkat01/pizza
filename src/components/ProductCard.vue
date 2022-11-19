@@ -23,21 +23,21 @@
         </div>
       </div>
       <div class="img flex justify-center px-[0.5px]">
-        <img class="w-full rounded-t h-44" :src="product.img" alt="product" />
+        <img class="w-full rounded-t h-44" :src="product.photo" alt="product" />
       </div>
       <div class="px-4">
         <div class="bg-main-color w-20 px-5 py-1 rounded-lg">
-          <span class="text-white"> {{ product.discount }} </span>
+          <span class="text-white"> {{ product.discount_rate }} </span>
         </div>
       </div>
     </div>
     <div class="price flex justify-between p-4">
       <div class="new">
-        <h3 class="font-extrabold text-lg">{{ product.new_price }}</h3>
+        <h3 class="font-extrabold text-lg">{{ product.card_price }}</h3>
         <span v-if="product.cart_count" class="text-muted">С картой</span>
       </div>
       <div class="old">
-        <h4 class="text-lg">{{ product.old_price }}</h4>
+        <h4 class="text-lg">{{ product.cash_price }}</h4>
         <span v-if="product.cart_count" class="text-muted">Обычная</span>
       </div>
     </div>

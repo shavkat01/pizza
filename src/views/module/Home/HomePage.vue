@@ -10,6 +10,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
+        {{getDiscountProducts}}
         <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in discount_products" :key="item">
             <ProductCard class="h-full" :product="item" />
@@ -110,6 +111,7 @@ import ProductCard from "@/components/ProductCard.vue";
 import NewProduct from "@/components/NewProduct.vue";
 import OfferCard from "@/components/OfferCard.vue";
 import Adds from "@/components/Adds.vue";
+import {mapActions, mapMutation, mapGetters} from "vuex"
 export default {
   components: {
     Layout,
@@ -123,32 +125,11 @@ export default {
     return {
       discount_products: [
         {
-          img: require("@/assets/images/pro1.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          old_price: "55.50$",
-          title: "Г/Ц Блинчики с мясом вес, Россия",
-        },
-        {
-          img: require("@/assets/images/pizza1.jpg"),
-          discount: "-50%",
-          new_price: "23.50$",
-          old_price: "46.50$",
-          title: "Молоко ПРОСТОКВАШИНО паст. питьевое цельное отборное...",
-        },
-        {
-          img: require("@/assets/images/pizza3.jpg"),
-          discount: "-50%",
-          new_price: "78.50$",
-          old_price: "99.50$",
-          title: "Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан... ",
-        },
-        {
-          img: require("@/assets/images/pizza4.jpg"),
-          discount: "-50%",
-          new_price: "60.50$",
-          old_price: "90.50$",
-          title: "Сосиски вареные МЯСНАЯ ИСТОРИЯ Молочные и С сыро... ",
+          photo: require("@/assets/images/pro1.png"),
+          discount_rate: "-50%",
+          card_price: "44.50$",
+          cash_price: "55.50$",
+          title: 'Молоко, сыр, яйцо',
         },
       ],
       new_products: [
@@ -240,6 +221,24 @@ export default {
       map: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5993.952157794102!2d69.274724!3d41.309384!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x81095e06b654b845!2sAmir%20Temur%20Square!5e0!3m2!1sen!2sus!4v1659287831875!5m2!1sen!2sus",
     };
   },
+  computed:{
+    ...mapGetters(['getDiscountProducts']),
+
+  },
+  methods: {
+    ...mapActions(['FETCH_DISCOUNT_PRODUCTS']),
+    getDiscountProduct(){
+      this.getDiscountProducts.map(setItem => {
+        this.discount_products.push(setItem)
+      })
+    }
+
+  },
+  mounted(){
+    this.FETCH_DISCOUNT_PRODUCTS(),
+    getDiscountProduct()
+  }
+
 };
 </script>
 

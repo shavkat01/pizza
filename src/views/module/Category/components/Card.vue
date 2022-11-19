@@ -1,6 +1,6 @@
 <template>
-        <div class="rounded-md relative hover:scale-105 transition-all">
-            <img class="w-full h-full rounded-md " :src="data.photo" />
+        <div class="rounded-md w-full h-full relative hover:scale-105 transition-all">
+            <img class="w-full h-full rounded-md " :src="`http://192.168.28.40:4000${data.photo}`" />
             <div
                 class="
                     z-20

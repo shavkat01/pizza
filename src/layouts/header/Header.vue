@@ -23,7 +23,8 @@
             items-center
             cursor-pointer
           "
-          @click="changeIsOpen(), $router.push(`/catalog/:id`)"
+          @mouseenter="hiddenClass = true"
+          @click="changeIsOpen(), $router.push(`/catalog`)"
         >
           <!-- <img
             v-if="is_open"
@@ -116,7 +117,9 @@
         </div>
       </div>
     </header>
-    <DownCatalogs />
+    <transition name="fade">
+      <DownCatalogs class="" @mouseleave="hiddenClass = false" v-show="$route.path == '/catalog' && hiddenClass"/>
+    </transition>
   </div>
 </template>
 
@@ -129,6 +132,7 @@ export default {
   },
   data() {
     return {
+      hiddenClass: false,
       is_tablet: true,
       is_mobile: true,
       is_open: false,
@@ -184,7 +188,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .header-sticky {
     position: sticky !important;
     top: 0;
