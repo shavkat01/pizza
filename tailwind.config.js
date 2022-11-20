@@ -32,6 +32,7 @@ module.exports = {
       'offer-card2': '#E5FFDE',
       'black': '#000000',
       'text_black': '#414141',
+      'modal-bg': '#fcd5bad5',
     },
     extend: {
       

@@ -10,7 +10,6 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
-        {{getDiscountProducts}}
         <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in discount_products" :key="item">
             <ProductCard class="h-full" :product="item" />
@@ -25,6 +24,7 @@
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
           </div>
         </div>
+  
         <div class="flex justify-between gap-10 flex-wrap mt-10 items-stretch">
           <div v-for="item in new_products" :key="item">
             <NewProduct class="h-full" :product="item" />
@@ -33,7 +33,7 @@
       </div>
       <div class="more-buy">
         <div class="flex justify-between items-end">
-          <div class="text-4xl font-bold">Покупали раньше</div>
+          <div class="text-4xl font-bold">Популярные</div>
           <div class="flex items-center gap-8 mt-10 cursor-pointer">
             <div class="text-lg">Все покупки</div>
             <img class="w-2 h-3 mt-1" src="@/assets/icons/right.png" alt="" />
@@ -111,7 +111,7 @@ import ProductCard from "@/components/ProductCard.vue";
 import NewProduct from "@/components/NewProduct.vue";
 import OfferCard from "@/components/OfferCard.vue";
 import Adds from "@/components/Adds.vue";
-import {mapActions, mapMutation, mapGetters} from "vuex"
+import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
     Layout,
@@ -123,122 +123,66 @@ export default {
   },
   data() {
     return {
-      discount_products: [
-        {
-          photo: require("@/assets/images/pro1.png"),
-          discount_rate: "-50%",
-          card_price: "44.50$",
-          cash_price: "55.50$",
-          title: 'Молоко, сыр, яйцо',
-        },
-      ],
-      new_products: [
-        {
-          img: require("@/assets/images/pro2.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-        {
-          img: require("@/assets/images/pizza2.jpg"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Колбаса сырокопченая МЯСНАЯ ИСТОРИЯ Сальчичон и Тоскан...",
-        },
-        {
-          img: require("@/assets/images/pro3.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-        {
-          img: require("@/assets/images/pro5.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-      ],
-      more_buy: [
-        {
-          img: require("@/assets/images/pro1.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-        {
-          img: require("@/assets/images/pro5.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-        {
-          img: require("@/assets/images/pro2.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-        {
-          img: require("@/assets/images/pro3.png"),
-          discount: "-50%",
-          new_price: "44.50$",
-          title: "Комбайн КЗС-1218 «ДЕСНА-ПОЛЕСЬЕ GS12»",
-        },
-      ],
-      offers: [
-        {
-          bg_data: " bg-offer-card1",
-          title: "Оформите карту «Северяночка»",
-          text: "И получайте бонусы при покупке в магазинах и на сайте",
-          img: require("@/assets/images/carta.png"),
-        },
-        {
-          bg_data: " bg-offer-card2",
-          title: "Покупайте акционные товары",
-          text: "И получайте вдвое больше бонусов",
-          img: require("@/assets/images/pro-bucket.png"),
-        },
-      ],
-      adds_data: [
-        {
-          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
-          title: "Режим использования масок и перчаток на территории магазинов",
-          time: "05.03.2021",
-          img: require("@/assets/images/add1.png"),
-        },
-        {
-          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
-          title: "Режим использования масок и перчаток на территории магазинов",
-          time: "05.03.2021",
-          img: require("@/assets/images/add2.png"),
-        },
-        {
-          text: "Подробная информация о режимах использования масок и перчаток на территории магазинов 'ЛЕНТА'. Информация обновляется каждый будний день.",
-          title: "Режим использования масок и перчаток на территории магазинов",
-          time: "05.03.2021",
-          img: require("@/assets/images/add3.png"),
-        },
-      ],
+      test: "ffrrfrf",
+      discount_products: [],
+      new_products: [],
+      more_buy: [],
+      offers: [],
+      adds_data: [],
       map: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5993.952157794102!2d69.274724!3d41.309384!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x81095e06b654b845!2sAmir%20Temur%20Square!5e0!3m2!1sen!2sus!4v1659287831875!5m2!1sen!2sus",
     };
   },
-  computed:{
-    ...mapGetters(['getDiscountProducts']),
-
+  computed: {
+    ...mapGetters(["getDiscountProducts", "getNewProducts", "getSpecOffers", "getArticles", "getPopular"]),
   },
   methods: {
-    ...mapActions(['FETCH_DISCOUNT_PRODUCTS']),
-    getDiscountProduct(){
-      this.getDiscountProducts.map(setItem => {
-        this.discount_products.push(setItem)
-      })
-    }
-
+    ...mapActions(["FETCH_DISCOUNT_PRODUCTS", "FETCH_NEW_PRODUCTS", "FETCH_SPEC_OFFERS", "FETCH_ARTICLES", "FETCH_POPULAR"]),
   },
-  mounted(){
-    this.FETCH_DISCOUNT_PRODUCTS(),
-    getDiscountProduct()
-  }
 
+  async mounted() {
+    await this.FETCH_DISCOUNT_PRODUCTS();
+      this.discount_products = this.getDiscountProducts.map(item => {
+        return {
+          ...item,
+          photo: `http://192.168.28.40:4000${item.photo}`
+        }
+    });
+
+
+    await this.FETCH_NEW_PRODUCTS();
+      this.new_products = this.getNewProducts.map(item => {
+        return {
+          ...item,
+          photo: `http://192.168.28.40:4000${item.photo}`
+        }
+    });
+
+
+    await this.FETCH_SPEC_OFFERS();
+      this.offers = this.getSpecOffers.map(item => {
+        return {
+          ...item,
+          photo: `http://192.168.28.40:4000${item.photo}`
+        }
+    });
+
+
+    await this.FETCH_ARTICLES();
+      this.adds_data = this.getArticles.map(item => {
+        return {
+          ...item,
+          photo: `http://192.168.28.40:4000${item.photo}`
+        }
+    });
+
+    await this.FETCH_POPULAR();
+      this.more_buy = this.getPopular.map(item => {
+        return {
+          ...item,
+          photo: `http://192.168.28.40:4000${item.photo}`
+        }
+    });
+  },
 };
 </script>
 

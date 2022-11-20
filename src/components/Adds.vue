@@ -3,11 +3,11 @@
     class="w-[400px] bg-white flex flex-col rounded-lg shadow-md py-1"
   >
     <div class="head relative w-full">
-      <img class="w-full rounded-t" :src="add_data.img" alt="" />
+      <img class="w-full rounded-t" :src="add_data.photo" alt="" />
     </div>
     <div class="price flex justify-between p-4">
       <div class="new">
-        <span class="text-muted">{{ add_data.time }}</span>
+        <span class="text-muted">{{ add_data.date }}</span>
       </div>
     </div>
     <div class="title px-4">

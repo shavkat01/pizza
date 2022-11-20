@@ -62,6 +62,11 @@ const routes = [
     name: 'catalog_info',
     component: () => import('../views/module/Category/components/CatalogInfo')
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/module/Profile/Profile.vue')
+  },
 ]
 
 const router = createRouter({

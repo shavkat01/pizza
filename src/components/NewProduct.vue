@@ -8,6 +8,7 @@
       rounded-lg
       shadow-md
       py-1
+      hover:shadow-[4px_8px_16px_rgba(255,102,51,0.2)]
     "
   >
     <div class="head relative">
@@ -17,17 +18,17 @@
         </div>
       </div>
       <div class="img h-44 flex justify-center">
-        <img class="w-full rounded-t" :src="product.img" alt="product" />
+        <img class="w-full rounded-t" :src="product.photo" alt="product" />
       </div>
-      <div class="px-4">
+      <!-- <div class="px-4">
         <div class="bg-main-color w-20 px-5 py-1 rounded-lg">
-          <span class="text-white"> {{ product.discount }} </span>
+          <span class="text-white"> {{ product.price }} </span>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="price flex justify-start p-4">
       <div class="new">
-        <h3 class="font-extrabold text-lg">{{ product.new_price }}</h3>
+        <h3 class="font-extrabold text-lg">{{ product.price }}</h3>
       </div>
     </div>
     <div class="title px-4">

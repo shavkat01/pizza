@@ -107,46 +107,54 @@
 
       <!-- Profil part -->
       <div
-        v-if="is_mobile"
         class="profile flex items-center gap-3 cursor-pointer"
+       
       >
+        <span class="w-10 h-10 rounded-full" :class="{'bg-brand-btn' : is_not_logged}"></span>
         <img class="w-10 h-10" src="@/assets/images/avatar.png" alt="" />
-        <div v-if="is_tablet" class="flex gap-3 items-center">
-          <div class="profile-name">Алексей</div>
-          <img src="@/assets/icons/down.png" class="h-2" alt="" />
+        <div  class="flex gap-3 items-center">
+          <div class="profile-name"  @click="is_auth = !is_auth" >Login</div>
+          <div @click="is_profile_open = !is_profile_open">
+            <img src="@/assets/icons/down.png" class="h-2" alt="" />
+          </div>
         </div>
+        <LoginDropDown @toLogin="toLogin" v-if="is_profile_open" />
       </div>
     </header>
     <transition name="fade">
       <DownCatalogs class="" @mouseleave="hiddenClass = false" v-show="$route.path == '/catalog' && hiddenClass"/>
     </transition>
+    <Auth v-if="is_auth" @closeModal="closeModal" @submit="submit" />
   </div>
 </template>
 
 <script>
+import Auth from "@/views/module/Profile/Authentification.vue";
+import LoginDropDown from "@/components/LoginDropDown.vue";
 import DownCatalogs from "../../views/module/Category/HeaderDownCatalog.vue";
 import {mapState, mapActions} from 'vuex'
 export default {
   components: {
     DownCatalogs,
+    Auth,
+    LoginDropDown,
   },
   data() {
     return {
+       is_profile_open: false,
+      is_not_logged: false,
+      is_auth: false,
       hiddenClass: false,
       is_tablet: true,
       is_mobile: true,
       is_open: false,
-      isFirs: false,
-      isSecond: false,
-      isThird: false,
-      catalogTitle: 'gvhb'
     };
   },
   computed:{
     ...mapState(['catalog'])
   },
   methods: {
-    ...mapActions(['FETCH_CATALOGS_DATA']),
+    ...mapActions(['FETCH_DISCOUNT_PRODUCTS', 'FETCH_CATALOGS_DATA']),
     onResize(e) {
       if (window.innerWidth <= 1280) {
         this.is_tablet = false;
@@ -161,28 +169,18 @@ export default {
     },
     changeIsOpen() {
       this.is_open = !this.is_open;
-
     },
-    clickedTab(val) {
-      if (val == "1") {
-        this.isFirs = true;
-        this.isSecond = false;
-        this.isThird = false;
-      }
-      if (val == "2") {
-        this.isSecond = true;
-        this.isThird = false;
-        this.isFirs = false;
-      }
-      if (val == "3") {
-        this.isThird = true;
-        this.isSecond = false;
-        this.isFirs = false;
-      }
+     closeModal() {
+      this.is_auth = false;
+    },
+    toLogin(){
+      this.is_auth = true;
     },
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
+
+    // this.FETCH_DISCOUNT_PRODUCTS()
     this.FETCH_CATALOGS_DATA()
   },
 };

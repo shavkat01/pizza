@@ -1,7 +1,7 @@
 <template>
   <div
-    class="bg-brand-btn w-[600px] h-[220px] flex rounded-md justify-between"
-    :class="data.bg_data"
+    class="w-[600px] h-[220px] flex rounded-md justify-between"
+    :class="`bg-[${data.bg_color}]`"
   >
     <div class="info py-8 px-6 my-auto">
       <div class="title text-2xl font-bold">{{ data.title }}</div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="px-6 w-3/4 my-auto flex justify-end">
-      <img class="" :src="data.img" alt="" />
+      <img class="" :src="data.photo" alt="" />
     </div>
   </div>
 </template>
